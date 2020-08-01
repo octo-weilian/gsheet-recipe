@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://swiperjs.com/demos/150-freemode.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+  <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+      
+      
+    }
+
+    body {
+      background: #fff;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #395172;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      
+    }
+
+    .swiper-container {
+      height: 100%;
+      overflow:hidden;
+      padding-right: 10px;
+      padding-left: 10px;
+ 
+    }
+
+    
+    .swiper-pagination {
+       margin-bottom: 5%;
+    
+    }
+    .swiper-pagination-bullet{ background-color: #56ADAA;}
+    
+    .swiper-slide {
+      text-align: left;
+      font-size: 18px;
+      background-color: #fff;
+      border-radius: 10px;
+      height: 94%;
+      margin-top:5%;
+      margin-bottom:5%;
+      overflow:scroll;
+
+      
+    }
+
+    iframe{
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        width: 100%;
+        height:40%;
+        top:0px;
+        overflow:hidden;
+    }
+
+    .item{
+      
+      padding-top:42%;
+        
+    }
+
+  </style>
+
+<body>
+
+    <!-- Slider main container -->
+    <div class="swiper-container">
+        
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide shadow p-3 mb-3 bg-white" >
+                <div class="item">
+                <iframe  src="https://www.youtube.com/embed/MOKqoCMFTgA?controls=0" frameborder="0"></iframe>
+                </div>
+
+                <div class="item">
+                    <h3 class="dish-name", style="font-weight: bold;text-align: center;">Spaghetti</h3>
+                    
+                    <div class="ingredients">
+                        <h4 class="ingredients-title" >Ingredients</h4>
+                        <ul style="margin-left:10px;padding:1px;">
+                            <li>Coffee</li>
+                            <li>Tea</li>
+                            <li>Coca Cola</li>
+                        </ul>
+                    </div>
+
+                    <div class="instructions">
+                        <h4 class="instructions-title" style="text-align:left;">Instructions</h4>
+                        <ul style="margin-left:10px;padding:1px;">
+                            <li>Coffee</li>
+                            <li>Tea</li>
+                            <li>Coca Cola</li>
+                            <li>Coffee</li>
+                            <li>Tea</li>
+                            <li>Coca Cola</li>
+                            <li>Coffee</li>
+                            <li>Tea</li>
+                            <li>Coffee</li>
+                            <li>Tea</li>
+                            <li>Coca Cola</li>
+                        </ul>
+                    </div>
+                </div>
+            
+                
+                    
+            </div>
+            <div class="swiper-slide shadow p-3 mb-3 bg-white">Slide 2</div>
+            <div class="swiper-slide shadow p-3 mb-3 bg-white">Slide 3</div>
+            <div class="swiper-slide shadow p-3 mb-3 bg-white">Slide 4</div>
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      freeMode: true,
+      freeModeSticky:true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        
+      },
+    });
+  </script>
+
+
+
+</body></html>
