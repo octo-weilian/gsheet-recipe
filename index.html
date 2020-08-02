@@ -9,11 +9,13 @@
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+
 
   <!-- Demo styles -->
   <style>
@@ -29,7 +31,7 @@
       background: #fff;
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
       font-size: 14px;
-      color: #395172;
+      color: #FF9AA2;
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
@@ -37,11 +39,11 @@
     }
 
     .swiper-container {
-      height: 100%;
+      height: 98%;
       overflow:hidden;
       padding-right: 10px;
       padding-left: 10px;
- 
+      margin-bottom:-15px;
     }
 
     
@@ -49,7 +51,7 @@
        margin-bottom: 5%;
     
     }
-    .swiper-pagination-bullet{ background-color: #56ADAA;}
+    .swiper-pagination-bullet{ background-color: #38CBB3;}
     
     .swiper-slide {
       text-align: left;
@@ -60,87 +62,142 @@
       margin-top:5%;
       margin-bottom:5%;
       overflow:scroll;
-
+      
       
     }
 
     iframe{
-        position: absolute;
-        left: 0px;
-        right: 0px;
-        width: 100%;
-        height:40%;
-        top:0px;
-        overflow:hidden;
-    }
-
-    .item{
       
-      padding-top:42%;
-        
+      width:95%;
+      height:40%;
+      border-radius: 10px;
+      border-style: solid;
+      border-width:thin;
+      border-color:#D3D3D3;
+      margin:10px;
+      overflow:hidden;
     }
 
+  h3{
+    font-weight: bold;
+    text-align: center;
+    color:#FF9AA2;
+    margin-bottom:20px;
+  }
+
+  h4 {
+    font-weight: bold;
+    color:#38CBB3;
+  }
+
+  ul{
+    margin-left:10px;
+    padding:0px;
+    color:#FF9AA2;
+    list-style-type:none;
+  }
+
+  li{
+    font-size:16px;
+  }
+
+  ol{
+    margin-left:10px;
+    padding:0px;
+    color:#FF9AA2;
+  }
+
+  h5{
+    text-align: center;
+    padding:0px;
+    top:0px;
+    text-decoration: none;
+  }
+  a{
+    color:#38CBB3;
+  }
+
+  .form-control:focus{
+    border-color: #38CBB3;
+    color:#38CBB3;
+    box-shadow: inset 0 1px 1px rgba(56,203,179, 0.075), 0 0 8px rgba(56,203,179, 0.6);
+    }
+  .form-control{
+    border-color: #38CBB3;
+    margin-top:15px;
+    
+    }
+
+  img{
+    width:95%;
+    height:80%;
+    object-fit:cover;
+    border-radius: 10px;
+    border-style: solid;
+    border-width:thin;
+    border-color:#D3D3D3;
+    margin:10px;
+    
+  }
+  .img-container{
+    text-align:center;
+  }
+
+  figcaption{
+    
+    font-size:14px;
+    margin-top:-10px;
+    margin-bottom:10px;
+    
+  }
+
+  #ingredients-id{
+    float:left;
+  }
+
+  #quantity-id{
+    float:right;
+  }
+
+  hr{
+    border.top:1px solid red;
+  }
+ 
   </style>
 
 <body>
 
     <!-- Slider main container -->
-    <div class="swiper-container">
+    <div class="swiper-container" id='container'>
         
         <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" id="swiper-wrapper-id">
             <!-- Slides -->
-            <div class="swiper-slide shadow p-3 mb-3 bg-white" >
-                <div class="item">
-                <iframe  src="https://www.youtube.com/embed/MOKqoCMFTgA?controls=0" frameborder="0"></iframe>
-                </div>
-
-                <div class="item">
-                    <h3 class="dish-name", style="font-weight: bold;text-align: center;">Spaghetti</h3>
-                    
-                    <div class="ingredients">
-                        <h4 class="ingredients-title" >Ingredients</h4>
-                        <ul style="margin-left:10px;padding:1px;">
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Coca Cola</li>
-                        </ul>
-                    </div>
-
-                    <div class="instructions">
-                        <h4 class="instructions-title" style="text-align:left;">Instructions</h4>
-                        <ul style="margin-left:10px;padding:1px;">
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Coca Cola</li>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Coca Cola</li>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Coca Cola</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="swiper-slide shadow p-3 mb-3 bg-white">
             
-                
-                    
-            </div>
-            <div class="swiper-slide shadow p-3 mb-3 bg-white">Slide 2</div>
-            <div class="swiper-slide shadow p-3 mb-3 bg-white">Slide 3</div>
-            <div class="swiper-slide shadow p-3 mb-3 bg-white">Slide 4</div>
+            <h2 style="text-align:center;">Google Sheet Recipe v1.0</h2>
+            <input type="url" class="form-control" id="sheet-url" onkeydown="getKey(this)" placeholder="Enter shared URL">
+            <small class="form-text text-muted" style="margin-bottom:20px;">Make sure the spreadsheet is published to the web</small>
 
+
+            <div class='img-container'>
+            <img src="img/publish.png" class="shadow-sm"><figcaption class="text-muted">1. Share and publish settings </figcaption>
+            <img src="img/share.png" class="shadow-sm"><figcaption class="text-muted">2. Copy shared URL</figcaption>
+            <img src="img/layout.png" class="shadow-sm"><figcaption class="text-muted">3. Example compatible Google Sheet layout</figcaption>
+            <img src="img/cooking.gif" class="shadow-sm"><figcaption class="text-muted">4. Get cooking!</figcaption>
+
+            </div>
+            </div>
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
-
     </div>
-
+    <h5>by <a href="https://github.com/octo-willy/gsheet-recipe" target="_blank">octo-willy</a></h5>
 
   <!-- Initialize Swiper -->
   <script>
+
+    function newSwiper(){
     var swiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -148,10 +205,114 @@
       freeModeSticky:true,
       pagination: {
         el: '.swiper-pagination',
-        clickable: true,
-        
-      },
+        clickable: true
+        }
     });
+    }
+
+    function init(key) {
+      Tabletop.init( {
+        key: key,
+        callback: showInfo,
+        simpleSheet:false
+        });
+      }
+    function showInfo(data, tabletop) {
+      var tabs = tabletop.modelNames;
+      document.getElementById("sheet-url").value = "Found " + tabs.length + " dishes. "+"Swipe right to view them!"
+
+
+      tabs.forEach(function(tab){
+        
+        //create slide object
+        var div = document.createElement('div');
+        div.className = 'swiper-slide shadow p-3 mb-3 bg-white';
+        var dishName = document.createElement('h3');
+        dishName.innerHTML = tab;
+        div.appendChild(dishName).appendChild(document.createElement('hr'));
+
+        //create ingredients
+        var ingredient_title = document.createElement('h4');
+        ingredient_title.innerHTML = 'Ingredients';
+        div.appendChild(ingredient_title);
+        var ingredients = document.createElement('ul');
+        var ingr_arr = [];
+        data[tab].elements.forEach(function(val){ingr_arr.push(val.Ingredients) });
+        ingredients.innerHTML = ingr_arr.map(function(item){if (item.length>0){return '<li><input type="checkbox"> '+item+'</li>';}}).join('');
+        ingredients.className="text-muted";
+        ingredients.setAttribute('id','ingredients-id')
+        div.appendChild(ingredients);
+
+        //create quantity
+        var quantity = document.createElement('ul');
+        var qty_arr = [];
+        data[tab].elements.forEach(function(val){qty_arr.push(val.Quantity) });
+        quantity.innerHTML = qty_arr.map(function(item){if (item.length>0){return '<li>'+item+'</li>';}}).join('');
+        quantity.className="text-muted";
+        quantity.setAttribute('id','quantity-id')
+        div.appendChild(quantity);
+
+        //create instructions
+        var instruction_title = document.createElement('h4');
+        instruction_title.innerHTML = 'Instructions';
+        div.appendChild(instruction_title);
+        var instructions = document.createElement('ol');
+        var inst_arr = [];
+        data[tab].elements.forEach(function(val){inst_arr.push(val.Instructions) });
+        instructions .innerHTML = inst_arr.map(function(item){if (item.length>0){return '<li>'+item+'</li>';}}).join('');
+        instructions.className="text-muted";
+        instructions.setAttribute('id','instructions-id')
+        div.appendChild(instructions);
+
+       
+        //create reference
+        var reference_title = document.createElement('h4');
+        reference_title.innerHTML = 'Reference';
+        
+        var ref_arr = [];
+        data[tab].elements.forEach(function(val){ref_arr.push(val.Link) });
+
+        if (ref_arr[0].includes('youtube')){
+            div.appendChild(reference_title);
+            youtube_id = ref_arr[0].split('=')[ref_arr[0].split('=').length-1];
+            youtube_iframe = document.createElement('iframe');
+            youtube_iframe.src = 'https://www.youtube.com/embed/'+youtube_id;
+            youtube_iframe.className = "shadow-sm"
+            div.appendChild(youtube_iframe);
+
+          } else if (ref_arr[0].includes('.com')){
+            div.appendChild(reference_title);
+            h5_element = document.createElement('h5');
+            a_element = document.createElement('a');
+            a_element.href = ref_arr[0];
+            a_element.setAttribute('target','_blank');
+            a_element.innerHTML = 'Link';
+            div.appendChild(h5_element.appendChild(a_element));
+            
+          } 
+
+        document.getElementById('swiper-wrapper-id').appendChild(div);
+        
+        newSwiper();
+      });
+          
+    }
+
+    function getKey(ele){
+      if(event.key==='Enter'){
+        var url = ele.value;
+        if (url.includes('google') && url.includes('sheet') && url.includes('sharing')){
+          var key = url.split('/').sort(function (a, b) { return b.length - a.length; })[0];
+          window.addEventListener('DOMContentLoaded', init(key))
+         
+        }
+        else{alert('Are you sure that is a Google Sheet shared URL?' )}
+        }
+    }
+    
+
+    
+
   </script>
 
 
