@@ -203,6 +203,8 @@
       spaceBetween: 10,
       freeMode: true,
       freeModeSticky:true,
+      freeModeMomentum:true,
+      freeModeMomentumRatio:0.5,
       pagination: {
         el: '.swiper-pagination',
         clickable: true
@@ -220,7 +222,7 @@
     function showInfo(data, tabletop) {
       var tabs = tabletop.modelNames;
       document.getElementById("sheet-url").value = "Found " + tabs.length + " dishes. "+"Swipe right to view them!"
-      
+
       tabs.forEach(function(tab){
         
         //create slide object
