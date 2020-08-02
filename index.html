@@ -301,7 +301,7 @@
     function getKey(ele){
       if(event.key==='Enter'){
         var url = ele.value;
-        if (url.includes('google') && url.includes('sheet') && url.includes('sharing')){
+        if (url.includes('google') && url.includes('sheet')){
           var key = url.split('/').sort(function (a, b) { return b.length - a.length; })[0];
           window.addEventListener('DOMContentLoaded', init(key))
          
