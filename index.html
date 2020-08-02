@@ -220,8 +220,7 @@
     function showInfo(data, tabletop) {
       var tabs = tabletop.modelNames;
       document.getElementById("sheet-url").value = "Found " + tabs.length + " dishes. "+"Swipe right to view them!"
-
-
+      
       tabs.forEach(function(tab){
         
         //create slide object
@@ -293,9 +292,9 @@
 
         document.getElementById('swiper-wrapper-id').appendChild(div);
         
-        newSwiper();
+      
       });
-          
+      newSwiper();   
     }
 
     function getKey(ele){
