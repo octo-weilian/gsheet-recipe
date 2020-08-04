@@ -5,9 +5,9 @@
   <title>Google Sheet Recipe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-  <!-- Link Swiper's CSS -->
+
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <!-- Swiper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -23,6 +23,7 @@
     body {
       position: relative;
       height: 100%;
+      overflow: hidden;
       
       
     }
@@ -48,8 +49,8 @@
 
     
     .swiper-pagination {
-       margin-bottom: 5%;
-    
+      margin-top: 10px;
+      
     }
     .swiper-pagination-bullet{ background-color: #38CBB3;}
     
@@ -62,7 +63,6 @@
       margin-top:5%;
       margin-bottom:5%;
       overflow:scroll;
-      
       
     }
 
@@ -79,7 +79,7 @@
     }
 
   h3{
-    font-weight: bold;
+    
     text-align: center;
     color:#FF9AA2;
     margin-bottom:20px;
@@ -109,12 +109,12 @@
 
   h5{
     text-align: center;
-    padding:0px;
-    top:0px;
+  
     text-decoration: none;
   }
   a{
     color:#38CBB3;
+
   }
 
   .form-control:focus{
@@ -162,7 +162,50 @@
   hr{
     border.top:1px solid red;
   }
- 
+ .dropdown{
+   text-align:center;
+   padding:10px;
+   margin-bottom:10px;
+ }
+#dropdownMenuButton{
+  background-color:#38CBB3;
+  border-color:#38CBB3;
+  width:60%;
+}
+#dropdownMenuButton:focus{
+    border-color: #38CBB3;
+    box-shadow: inset 0 1px 1px rgba(56,203,179, 0.075), 0 0 8px rgba(56,203,179, 0.6);
+}
+
+#dropdown-menu{
+  text-align:center;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 90% !important;
+
+}
+.btn-sm{
+  background-color:white;
+  border-color:#38CBB3;
+  color:#38CBB3;
+  width:50px;
+  padding:2px;
+}
+.btn-sm:focus{
+  color: #38CBB3 !important; 
+  background-color: white !important; 
+  border-color: #38CBB3 !important;
+  box-shadow: none;
+}
+.btn-sm:active{
+
+  color: #38CBB3 !important; 
+  background-color: white !important; 
+  border-color: #38CBB3 !important;
+  box-shadow: inset 0 1px 1px rgba(56,203,179, 0.075), 0 0 8px rgba(56,203,179, 0.6) !important;
+}
+
+
   </style>
 
 <body>
@@ -174,43 +217,52 @@
         <div class="swiper-wrapper" id="swiper-wrapper-id">
             <!-- Slides -->
             <div class="swiper-slide shadow p-3 mb-3 bg-white">
-            
-            <h2 style="text-align:center;">Google Sheet Recipe v1.0</h2>
-            <input type="url" class="form-control" id="sheet-url" onkeydown="getKey(this)" placeholder="Enter shared URL">
-            <small class="form-text text-muted" style="margin-bottom:20px;">Make sure the spreadsheet is published to the web</small>
-
-
-            <div class='img-container'>
-            <img src="img/publish.png" class="shadow-sm"><figcaption class="text-muted">1. Share and publish settings </figcaption>
-            <img src="img/share.png" class="shadow-sm"><figcaption class="text-muted">2. Copy shared URL</figcaption>
-            <img src="img/layout.png" class="shadow-sm"><figcaption class="text-muted">3. Example compatible Google Sheet layout</figcaption>
-            <img src="img/cooking.gif" class="shadow-sm"><figcaption class="text-muted">4. Get cooking!</figcaption>
-
+              
+              <h2 style="text-align:center;">Google Sheet Recipe</h2>
+              <input type="url" class="form-control" id="sheet-url" onkeydown="getKey(this)" placeholder="Enter shared URL">
+              <small class="form-text text-muted" style="margin-bottom:10px;">Make sure the spreadsheet is published to the web</small>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle shadow-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My recipes</button>
+                <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
+              
+              </div>
+              <div class='img-container'>
+              <img src="img/publish.png" class="shadow-sm"><figcaption class="text-muted">1. Share and publish settings </figcaption>
+              <img src="img/share.png" class="shadow-sm"><figcaption class="text-muted">2. Copy shared URL</figcaption>
+              <img src="img/layout.png" class="shadow-sm"><figcaption class="text-muted">3. Example compatible Google Sheet layout</figcaption>
+              <img src="img/cooking.gif" class="shadow-sm"><figcaption class="text-muted">4. Get cooking!</figcaption>
+              <h5>by <a href="https://github.com/octo-willy/gsheet-recipe" target="_blank">octo-willy</a></h5>
             </div>
             </div>
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
+        
     </div>
-    <h5>by <a href="https://github.com/octo-willy/gsheet-recipe" target="_blank">octo-willy</a></h5>
+    <h5><button id="0" onClick="slide_to(this.id)" type="button" class="btn btn-secondary btn-sm">Home</button></h5>
 
   <!-- Initialize Swiper -->
   <script>
-
+    var swiper;
     function newSwiper(){
-    var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      freeMode: true,
-      freeModeSticky:true,
-      freeModeMomentum:true,
-      freeModeMomentumRatio:0.5,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-        }
-    });
+        swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        freeMode: true,
+        freeModeSticky:true,
+        freeModeMomentum:true,
+        freeModeMomentumRatio:0.5,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+          }
+      });
     }
+
+    function slide_to(id){
+        swiper.slideTo(id);
+    }
+
 
     function init(key) {
       Tabletop.init( {
@@ -221,16 +273,25 @@
       }
     function showInfo(data, tabletop) {
       var tabs = tabletop.modelNames;
-      document.getElementById("sheet-url").value = "Found " + tabs.length + " dishes. "+"Swipe right to view them!"
+      alert("Found " + tabs.length + " dishes. "+"Swipe right to view them!")
+      
 
-      tabs.forEach(function(tab){
+      tabs.forEach(function(tab,i){
         
         //create slide object
         var div = document.createElement('div');
-        div.className = 'swiper-slide shadow p-3 mb-3 bg-white';
+        div.className = 'swiper-slide shadow p-3 mb-3 bg-white added-slide';
         var dishName = document.createElement('h3');
         dishName.innerHTML = tab;
         div.appendChild(dishName).appendChild(document.createElement('hr'));
+
+        //create dropdown items
+        var dropdown_item = document.createElement('a')
+        dropdown_item.className = 'dropdown-item';
+        dropdown_item.innerHTML = tab;
+        dropdown_item.setAttribute('id',i+1)
+        dropdown_item.setAttribute('onClick','slide_to(this.id)')
+        document.getElementById('dropdown-menu').appendChild(dropdown_item);
 
         //create ingredients
         var ingredient_title = document.createElement('h4');
@@ -260,7 +321,7 @@
         var instructions = document.createElement('ol');
         var inst_arr = [];
         data[tab].elements.forEach(function(val){inst_arr.push(val.Instructions) });
-        instructions .innerHTML = inst_arr.map(function(item){if (item.length>0){return '<li>'+item+'</li>';}}).join('');
+        instructions.innerHTML = inst_arr.map(function(item){if (item.length>0){return '<li>'+item+'</li>';}}).join('');
         instructions.className="text-muted";
         instructions.setAttribute('id','instructions-id')
         div.appendChild(instructions);
@@ -301,13 +362,19 @@
 
     function getKey(ele){
       if(event.key==='Enter'){
-        var url = ele.value;
-        if (url.includes('google') && url.includes('sheet')){
-          var key = url.split('/').sort(function (a, b) { return b.length - a.length; })[0];
-          window.addEventListener('DOMContentLoaded', init(key))
-         
-        }
-        else{alert('Are you sure that is a Google Sheet shared URL?' )}
+        if ($('.added-slide')!==null){
+          $('.added-slide').remove();
+          $('.dropdown-item').remove();
+          } 
+            var url = ele.value;
+            if (url.includes('google') && url.includes('sheet')){
+              var key = url.split('/').sort(function (a, b) { return b.length - a.length; })[0];
+              window.addEventListener('DOMContentLoaded', init(key))
+              ele.value = ''
+              }
+        else{
+          alert('Are you sure that is a Google Sheet shared URL?' );
+          }
         }
     }
     
