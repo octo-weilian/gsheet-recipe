@@ -16,7 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
 
-
   <!-- Demo styles -->
   <style>
     html,
@@ -24,10 +23,8 @@
       position: relative;
       height: 100%;
       overflow: hidden;
-      
-      
     }
-
+    
     body {
       background: #fff;
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -36,11 +33,13 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      
     }
 
+    
+
+
     .swiper-container {
-      height: 98%;
+      height: 96%;
       overflow:hidden;
       padding-right: 10px;
       padding-left: 10px;
@@ -49,7 +48,7 @@
 
     
     .swiper-pagination {
-      margin-top: 10px;
+      padding:20px;
       
     }
     .swiper-pagination-bullet{ background-color: #38CBB3;}
@@ -160,8 +159,11 @@
   }
 
   hr{
-    border.top:1px solid red;
+    border:none;
+    height: 1px;
+    background-color:#38CBB3;
   }
+  
  .dropdown{
    text-align:center;
    padding:10px;
@@ -184,27 +186,73 @@
   top: 90% !important;
 
 }
-.btn-sm{
+.home{
   background-color:white;
   border-color:#38CBB3;
+  
   color:#38CBB3;
-  width:50px;
+  width:20%;
+  height:40px;
   padding:2px;
 }
-.btn-sm:focus{
+.home:focus{
   color: #38CBB3 !important; 
   background-color: white !important; 
   border-color: #38CBB3 !important;
-  box-shadow: none;
+  box-shadow: none !important;
 }
-.btn-sm:active{
-
+.home:active{
   color: #38CBB3 !important; 
   background-color: white !important; 
   border-color: #38CBB3 !important;
   box-shadow: inset 0 1px 1px rgba(56,203,179, 0.075), 0 0 8px rgba(56,203,179, 0.6) !important;
 }
 
+.dark-home{
+    background-color: #332940 !important;
+    border: none !important;
+    color: #38CBB3 !important; 
+}
+
+.dark-home:active{
+    background-color: #332940 !important; 
+    border: none !important;
+    color: #38CBB3 !important; 
+}
+
+.dark-home:focus{
+    background-color: #332940 !important;
+    border: none !important;
+    color: #38CBB3 !important; 
+}
+
+.dark-home:hover{
+    background-color: #332940 !important; 
+    border: none !important;
+    color: #38CBB3 !important; 
+}
+
+.dark-switch{
+  position:absolute !important; 
+  margin-left:15% !important; 
+  margin-top:10px;:
+  border-color:white !important; 
+  color:#332940 !important; 
+  background-color: rgba(0,0,0, 0.0) !important; 
+}
+
+.dark-mode {
+    background-color: #1F1A24 !important;
+    color: white;
+  }
+
+  .dark-slide{
+    background-color: #332940 !important;
+    
+  }
+  .dark-font{
+    color:white !important;
+  }
 
   </style>
 
@@ -222,7 +270,7 @@
               <input type="url" class="form-control" id="sheet-url" onkeydown="getKey(this)" placeholder="Enter shared URL">
               <small class="form-text text-muted" style="margin-bottom:10px;">Make sure the spreadsheet is published to the web</small>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle shadow-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My recipes</button>
+                <button class="btn btn-secondary dropdown-toggle shadow-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Recipes</button>
                 <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
               
               </div>
@@ -239,7 +287,12 @@
         <div class="swiper-pagination"></div>
         
     </div>
-    <h5><button id="0" onClick="slide_to(this.id)" type="button" class="btn btn-secondary btn-sm">Home</button></h5>
+    
+    <h5>
+      <button id="0" onClick="slide_to(this.id)" type="button" class="btn shadow-sm btn-secondary btn-sm home">Home</button>
+      <a style="font-size:16px;" id ="dark-switch" class="dark-switch" onClick="light_switch()" >Go Dark</a>
+    </h5>
+    
 
   <!-- Initialize Swiper -->
   <script>
@@ -257,6 +310,26 @@
           clickable: true
           }
       });
+    }
+
+    function light_switch(){
+
+      var dark_switch = document.getElementById('dark-switch');
+      if (dark_switch.innerHTML==='Go Dark'){
+        dark_switch.innerHTML = "Go Light";
+      } else if (dark_switch.innerHTML==='Go Light'){
+        dark_switch.innerHTML = 'Go Dark';
+        }
+
+      $("body").toggleClass('dark-mode');
+      $(".home").toggleClass('dark-home');
+      $(".swiper-slide").toggleClass('dark-slide');
+      $(".dark-switch").toggleClass('dark-font')
+      $(".text-muted").toggleClass('dark-font');
+    
+      var added_slides = $(".added-slide").toggleClass('dark-slide');
+      if (added_slides.length>0){$(".added-slide").toggleClass('dark-slide');}
+
     }
 
     function slide_to(id){
@@ -280,8 +353,17 @@
         
         //create slide object
         var div = document.createElement('div');
-        div.className = 'swiper-slide shadow p-3 mb-3 bg-white added-slide';
-        var dishName = document.createElement('h3');
+        
+
+        if ($('.dark-mode')[0]!==undefined){
+              div.className = 'swiper-slide shadow p-3 mb-3 bg-white dark-slide';
+          } else {
+              div.className = 'swiper-slide shadow p-3 mb-3 bg-white added-slide';
+          }
+
+        var text_style ="text-muted";
+        
+        var dishName = document.createElement('h2');
         dishName.innerHTML = tab;
         div.appendChild(dishName).appendChild(document.createElement('hr'));
 
@@ -301,16 +383,17 @@
         var ingr_arr = [];
         data[tab].elements.forEach(function(val){ingr_arr.push(val.Ingredients) });
         ingredients.innerHTML = ingr_arr.map(function(item){if (item.length>0){return '<li><input type="checkbox"> '+item+'</li>';}}).join('');
-        ingredients.className="text-muted";
+        ingredients.className=text_style;
         ingredients.setAttribute('id','ingredients-id')
         div.appendChild(ingredients);
 
+        
         //create quantity
         var quantity = document.createElement('ul');
         var qty_arr = [];
         data[tab].elements.forEach(function(val){qty_arr.push(val.Quantity) });
         quantity.innerHTML = qty_arr.map(function(item){if (item.length>0){return '<li>'+item+'</li>';}}).join('');
-        quantity.className="text-muted";
+        quantity.className=text_style;
         quantity.setAttribute('id','quantity-id')
         div.appendChild(quantity);
 
@@ -322,7 +405,7 @@
         var inst_arr = [];
         data[tab].elements.forEach(function(val){inst_arr.push(val.Instructions) });
         instructions.innerHTML = inst_arr.map(function(item){if (item.length>0){return '<li>'+item+'</li>';}}).join('');
-        instructions.className="text-muted";
+        instructions.className=text_style;
         instructions.setAttribute('id','instructions-id')
         div.appendChild(instructions);
 
@@ -352,7 +435,7 @@
             div.appendChild(h5_element.appendChild(a_element));
             
           } 
-
+        
         document.getElementById('swiper-wrapper-id').appendChild(div);
         
       
@@ -371,7 +454,9 @@
               var key = url.split('/').sort(function (a, b) { return b.length - a.length; })[0];
               window.addEventListener('DOMContentLoaded', init(key))
               ele.value = ''
+              if ($('.dark-mode')[0]!==undefined){light_switch();}
               }
+              
         else{
           alert('Are you sure that is a Google Sheet shared URL?' );
           }
