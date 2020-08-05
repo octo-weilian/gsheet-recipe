@@ -5,7 +5,6 @@
   <title>Google Sheet Recipe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -39,7 +38,7 @@
 
 
     .swiper-container {
-      height: 96%;
+      height: 95%;
       overflow:hidden;
       padding-right: 10px;
       padding-left: 10px;
@@ -189,11 +188,16 @@
 .home{
   background-color:white;
   border-color:#38CBB3;
-  
+  border-radius:50%;
   color:#38CBB3;
-  width:20%;
-  height:40px;
-  padding:2px;
+  width:10px;
+  height:10px;
+  padding:22px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-left:45%;
+  
 }
 .home:focus{
   color: #38CBB3 !important; 
@@ -233,8 +237,9 @@
 }
 
 .dark-switch{
+  float:right !important; 
   position:absolute !important; 
-  margin-left:15% !important; 
+  margin-left:30% !important; 
   margin-top:10px;:
   border-color:white !important; 
   color:#332940 !important; 
@@ -277,7 +282,7 @@
               <div class='img-container'>
               <img src="img/publish.png" class="shadow-sm"><figcaption class="text-muted">1. Share and publish settings </figcaption>
               <img src="img/share.png" class="shadow-sm"><figcaption class="text-muted">2. Copy shared URL</figcaption>
-              <img src="img/layout.png" class="shadow-sm"><figcaption class="text-muted">3. Example compatible Google Sheet layout</figcaption>
+              <img src="img/layout.png" class="shadow-sm"><figcaption class="text-muted">3. Recommended Google Sheet layout</figcaption>
               <img src="img/cooking.gif" class="shadow-sm"><figcaption class="text-muted">4. Get cooking!</figcaption>
               <h5>by <a href="https://github.com/octo-willy/gsheet-recipe" target="_blank">octo-willy</a></h5>
             </div>
@@ -289,8 +294,9 @@
     </div>
     
     <h5>
-      <button id="0" onClick="slide_to(this.id)" type="button" class="btn shadow-sm btn-secondary btn-sm home">Home</button>
-      <a style="font-size:16px;" id ="dark-switch" class="dark-switch" onClick="light_switch()" >Go Dark</a>
+    <a style="font-size:16px;" id ="dark-switch" class="dark-switch" onClick="light_switch()" >Go Dark</a>
+    <button id="0" onClick="slide_to(this.id)" type="button" class="btn shadow-sm btn-secondary btn-sm home">Home</button>
+      
     </h5>
     
 
@@ -348,13 +354,11 @@
       var tabs = tabletop.modelNames;
       alert("Found " + tabs.length + " dishes. "+"Swipe right to view them!")
       
-
       tabs.forEach(function(tab,i){
         
         //create slide object
         var div = document.createElement('div');
-        
-
+  
         if ($('.dark-mode')[0]!==undefined){
               div.className = 'swiper-slide shadow p-3 mb-3 bg-white dark-slide';
           } else {
@@ -375,44 +379,46 @@
         dropdown_item.setAttribute('onClick','slide_to(this.id)')
         document.getElementById('dropdown-menu').appendChild(dropdown_item);
 
+        //get column names
+        var col_names = Object.keys(data[tab].elements[0])
+      
         //create ingredients
         var ingredient_title = document.createElement('h4');
-        ingredient_title.innerHTML = 'Ingredients';
-        div.appendChild(ingredient_title);
+        ingredient_title.innerHTML = col_names[0];
         var ingredients = document.createElement('ul');
-        var ingr_arr = [];
-        data[tab].elements.forEach(function(val){ingr_arr.push(val.Ingredients) });
-        ingredients.innerHTML = ingr_arr.map(function(item){if (item.length>0){return '<li><input type="checkbox"> '+item+'</li>';}}).join('');
-        ingredients.className=text_style;
+        ingredients.setAttribute('class',text_style)
         ingredients.setAttribute('id','ingredients-id')
+        ingredients.innerHTML = data[tab].elements.map(function(val){
+            if (val[col_names[0]].length>0){
+               div.appendChild(ingredient_title);
+              return '<li><input type="checkbox"> '+val[col_names[0]]+'</li>';
+              }}).join('');
         div.appendChild(ingredients);
 
-        
         //create quantity
         var quantity = document.createElement('ul');
-        var qty_arr = [];
-        data[tab].elements.forEach(function(val){qty_arr.push(val.Quantity) });
-        quantity.innerHTML = qty_arr.map(function(item){if (item.length>0){return '<li>'+item+'</li>';}}).join('');
-        quantity.className=text_style;
+        quantity.setAttribute('class',text_style)
         quantity.setAttribute('id','quantity-id')
+        quantity.innerHTML = data[tab].elements.map(function(val){
+            if (val[col_names[1]].length>0){return '<li>'+val[col_names[1]]+'</li>';}}).join('');
         div.appendChild(quantity);
 
         //create instructions
         var instruction_title = document.createElement('h4');
-        instruction_title.innerHTML = 'Instructions';
-        div.appendChild(instruction_title);
+        instruction_title.innerHTML = col_names[2];
         var instructions = document.createElement('ol');
-        var inst_arr = [];
-        data[tab].elements.forEach(function(val){inst_arr.push(val.Instructions) });
-        instructions.innerHTML = inst_arr.map(function(item){if (item.length>0){return '<li>'+item+'</li>';}}).join('');
-        instructions.className=text_style;
+        instructions.setAttribute('class',text_style)
         instructions.setAttribute('id','instructions-id')
+        instructions.innerHTML = data[tab].elements.map(function(val){
+            if (val[col_names[2]].length>0){
+              div.appendChild(instruction_title);
+              return '<li>'+val[col_names[2]]+'</li>';
+              }}).join('');
         div.appendChild(instructions);
-
-       
+        
         //create reference
         var reference_title = document.createElement('h4');
-        reference_title.innerHTML = 'Reference';
+        reference_title.innerHTML = col_names[3];
         
         var ref_arr = [];
         data[tab].elements.forEach(function(val){ref_arr.push(val.Link) });
@@ -438,7 +444,6 @@
         
         document.getElementById('swiper-wrapper-id').appendChild(div);
         
-      
       });
       newSwiper();   
     }
